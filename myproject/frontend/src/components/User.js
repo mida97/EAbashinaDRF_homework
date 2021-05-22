@@ -11,10 +11,10 @@ const UserItem = ({user}) => {
                {user.email}
            </td>
            <td>
-               {user.first_name}
+               {user.firstName}
            </td>
            <td>
-               {user.last_name}
+               {user.lastName}
            </td>
        </tr>
    )
