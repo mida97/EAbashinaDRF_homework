@@ -23,7 +23,7 @@ class ToDo (models.Model):
         self.fact_date = datetime.now()
         self.change_date = datetime.now()
         self.is_done = True
-        self.save(self)
+        self.save()
 
 
     def save(self, *args, **kwargs):
