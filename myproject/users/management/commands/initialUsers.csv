@@ -1,0 +1,7 @@
+username;email;first_name;last_name;is_superuser;is_staff
+djadmin;djadmin@mail.ru;Django;Admin;True;True
+user1;user1@mail.ru;user1;user1;False;False
+user2;user2@mail.ru;user2;user2;False;False
+user3;user3@mail.ru;user3;user3;False;False
+user4;user4@mail.ru;user4;user4;False;False
+user5;user5@mail.ru;user5;user5;False;False
