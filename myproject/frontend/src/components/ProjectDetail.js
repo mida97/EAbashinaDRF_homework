@@ -47,8 +47,9 @@ const ToDoList = ({todos}) => {
 
 
  
-const ProjectDetail = ({project}) => {
+const ProjectDetail = (({project}, {todos})) => {
     return (
+    <div>
      <form>
          <fieldset>
          <legend>Проект №{project.projectId}</legend>
@@ -57,8 +58,9 @@ const ProjectDetail = ({project}) => {
              <input type="text" size="40" value={project.name}/> <br />
          </fieldset>
 
-     </form> 
-  
+     </form>
+     {project.map((todos) =>  <ToDoList todos={todos} />)}
+    </div>
     )
  }
 
