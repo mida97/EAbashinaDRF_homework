@@ -15,7 +15,7 @@ const ProjectItem = ({project}) => {
 
            <td>
                {/* {project.projectId} */}
-               <Link to={`projects/${project.projectId}`}>{project.projectId}</Link>
+               <Link to={`/project/${project.projectId}`}>{project.projectId}</Link>
            </td>
        </tr>
    )

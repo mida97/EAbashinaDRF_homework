@@ -2,67 +2,23 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 
 
+const ProjectDetail = ({projects}) => {
 
-const ToDoItem = ({todo}) => {
+   let { ProjectId } = useParams();
+   console.log(ProjectId)
+   let project = projects.find((project) => project.ProjectId == ProjectId);
+
    return (
-       <tr>
-           <td>
-               {todo.name}
-           </td>
-           <td>
-               {todo.project.name}
-           </td>
-{/*            <td>
-               {todo.changeDate}
-           </td> */}
-       </tr>
+        <div>
+         <form>
+             <fieldset>
+             <legend>Проект №{project.projectId}</legend>
+                 <input type="text" size="40" value={project.name}/> <br />
+                 <input type="text" size="40" value={project.status}/><br />
+             </fieldset>
+         </form>
+        </div>
    )
 }
-
-
-const ToDoList = ({todos}) => {
-    let { id } = useParams();
-    let filtered_items = todos.filter((todo) => todo.project.projectId == id)
-    return (
-     <div>
-         <h1>
-             ToDoList
-         </h1>
-         <table>
-             <th>
-                     Name
-             </th>
-             <th>
-                     Project
-             </th>
-     {/*            <th>
-                     Change date
-             </th> */}
-             {filtered_items.map((todo) =>  <ToDoItem todo={todo} />)}
-
-         </table>
-        </div>
-    )
- }
-
-
- 
-const ProjectDetail = (({project}, {todos})) => {
-    return (
-    <div>
-     <form>
-         <fieldset>
-         <legend>Проект №{project.projectId}</legend>
-             <input type="text" size="40" value={project.name}/> <br />
-             <input type="text" size="40" value={project.status}/><br />
-             <input type="text" size="40" value={project.name}/> <br />
-         </fieldset>
-
-     </form>
-     {project.map((todos) =>  <ToDoList todos={todos} />)}
-    </div>
-    )
- }
-
 
 export default ProjectDetail

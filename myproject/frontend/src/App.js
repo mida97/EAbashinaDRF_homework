@@ -5,9 +5,10 @@ import Menu from './components/Menu.js'
 import Footer from './components/Footer.js'
 // import axios from 'axios'
 import ProjectList from './components/ProjectList.js'
-//import ProjectDetail from './components/ProjectDetail.js'
+import ProjectDetail from './components/ProjectDetail.js'
+import ProjectToDoList from './components/ProjectToDO.js'
 import ToDoList from './components/ToDoList.js'
-import {BrowserRouter, Route, Link, Switch, Redirect} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 
 
 const NotFound404 = ({ location }) => {
@@ -24,9 +25,11 @@ class App extends React.Component {
 /*    constructor(props) {
        super(props)
        this.state = {
-           'users': []
+           'users': [],
+           'projects': [],
+           'todos': []
        }
-   } */
+   }*/
 
 
    constructor(props) {
@@ -48,8 +51,9 @@ class App extends React.Component {
     }
   }
 
+/*
 
-/*    componentDidMount() {
+    componentDidMount() {
     axios.get('http://127.0.0.1:8000/api/users')
         .then(response => {
             const users = response.data
@@ -59,8 +63,28 @@ class App extends React.Component {
                 }
             )
         }).catch(error => console.log(error))
-    }
- */
+
+    axios.get('http://127.0.0.1:8000/api/projects')
+        .then(response => {
+            const projects = response.data
+                this.setState(
+                {
+                    'projects': projects
+                }
+            )
+        }).catch(error => console.log(error))
+
+    axios.get('http://127.0.0.1:8000/api/todos')
+        .then(response => {
+            const todos = response.data
+                this.setState(
+                {
+                    'todos': todos
+                }
+            )
+        }).catch(error => console.log(error))
+*/
+
 
 
    render () {
@@ -72,16 +96,15 @@ class App extends React.Component {
                     </div>           
                     <div class='mycontent'>
                         <Switch>
-                            <Route exact path='/users' component={() => <UserList users={this.state.users} />}  />
-                            <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects} />} />
+                            <Route exact path='/users' component={() => <UserList users={this.state.users} />} />
                             <Route exact path='/todos' component={() => <ToDoList todos={this.state.todos} />} />
-                            <Redirect from='/' to='/projects' />
-                            <Route path="/projects/:id">
-                            <ToDoList todos={this.state.todos} />
+                            <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects} />}/>
+                            <Route exact path='/project/:id'>
+                              <ProjectDetail projects={this.state.projects} />
+                              <ProjectToDoList todos={this.state.todos}/>
                             </Route>
-                            <Route component={NotFound404} />     
-                            
-                        </Switch>     
+                            <Route component={NotFound404} />
+                        </Switch>
                     </div>
                     <div>
                         <Footer/>  
