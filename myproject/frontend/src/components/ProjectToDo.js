@@ -5,10 +5,10 @@ const ToDoItem = ({todo}) => {
    return (
        <tr>
            <td>
-               {todo.name}
+               {todo.description}
            </td>
            <td>
-               {todo.project.name}
+               {todo.planDate}
            </td>
        </tr>
    )
@@ -17,12 +17,10 @@ const ToDoItem = ({todo}) => {
 
 const ProjectToDoList = ({todos}) => {
     let { projectId } = useParams();
-    let filtered_items = todos.filter((todo) => todo.project.projectId === projectId)
+    let filtered_items = todos.filter((todo) => todo.project == projectId);
     return (
      <div>
-         <h1>
-             ToDoList
-         </h1>
+        <a> Список задач</a>
          <table>
              <th>
                      Name
