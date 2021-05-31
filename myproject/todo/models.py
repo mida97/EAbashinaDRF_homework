@@ -19,7 +19,7 @@ class ToDo (models.Model):
     is_done = models.BooleanField()
 
 
-    def complete(self):
+    def todo_complete(self):
         self.fact_date = datetime.now()
         self.change_date = datetime.now()
         self.is_done = True
