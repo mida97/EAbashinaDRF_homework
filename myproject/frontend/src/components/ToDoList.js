@@ -1,18 +1,22 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 const ToDoItem = ({todo}) => {
    return (
        <tr>
            <td>
-               {todo.name}
+               {todo.todoId}
            </td>
            <td>
-               {todo.project.name}
+               {todo.description}
            </td>
-{/*            <td>
-               {todo.changeDate}
-           </td> */}
+           <td>
+               <Link to={`/project/${todo.project}`}>{todo.project}</Link>
+           </td>
+           <td>
+               {todo.planDate}
+           </td>
        </tr>
    )
 }
@@ -26,14 +30,17 @@ const ToDoList = ({todos}) => {
         </h1>
         <table>
             <th>
+                    #
+            </th>
+            <th>
                     Name
             </th>
             <th>
                     Project
             </th>
-    {/*            <th>
-                    Change date
-            </th> */}
+            <th>
+                    Plan date
+            </th>
             {todos.map((todo) => <ToDoItem todo={todo} />)}
         </table>
        </div>
