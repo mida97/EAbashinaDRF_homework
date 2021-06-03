@@ -35,22 +35,25 @@ class App extends React.Component {
 
         axios.get('http://127.0.0.1:8000/api/users')
             .then(response => {
-                let s=this.state
-                s.users=response.data.results
-                this.setState(s)
+            const users = response.data.results
+                this.setState({
+                    'users':users
+                })
             }).catch(error => console.log(error));
         axios.get('http://127.0.0.1:8000/api/projects')
         .then(response => {
-                let s=this.state
-                s.projects=response.data.results
-                this.setState(s)
+            const projects = response.data.results
+                this.setState({
+                    'projects':projects
+                })
         }).catch(error => console.log(error));
 
         axios.get('http://127.0.0.1:8000/api/todo')
         .then(response => {
-                let s=this.state
-                s.todos=response.data.results
-                this.setState(s)
+            const todos = response.data.results
+                this.setState({
+                    'todos':todos
+                })
         }).catch(error => console.log(error));
 
     }
