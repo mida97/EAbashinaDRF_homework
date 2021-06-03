@@ -26,7 +26,7 @@ const ProjectToDoList = ({todos}) => {
                      Name
              </th>
              <th>
-                     Project {projectId}
+                     Plan date
              </th>
              {filtered_items.map((todo) =>  <ToDoItem todo={todo} />)}
          </table>
