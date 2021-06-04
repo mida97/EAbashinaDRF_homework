@@ -45,7 +45,7 @@ class App extends React.Component {
         this.setState(
            {
                'token': token
-           }
+           }, this.loadData
         );
     }
 
@@ -56,7 +56,8 @@ class App extends React.Component {
                {
                    'token': response.data.token,
                    'username': username
-               });
+               }, this.loadData
+               );
            localStorage.setItem('token', response.data.token);
            localStorage.setItem('username', username);
            console.log(this.state.token);
@@ -71,13 +72,15 @@ class App extends React.Component {
        console.log("logout")
        this.setState(
            {
-               'token': '',
-               'username':''
+                'users': [],
+                'projects': [],
+                'todos': [],
+                'token': '',
+                'username':''
            }
        );
        localStorage.setItem('token', '');
        localStorage.setItem('username', '');
-
     }
 
     create_header() {
@@ -119,7 +122,7 @@ class App extends React.Component {
 
     componentDidMount(){
         this.restore_token();
-        this.loadData()
+
     }
 
 
