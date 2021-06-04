@@ -4,6 +4,7 @@ from .models import Project
 
 class ProjectModelSerializer(HyperlinkedModelSerializer):
    class Meta:
+       ordering = ['project_id']
        model = Project
        fields = [
            'project_id',

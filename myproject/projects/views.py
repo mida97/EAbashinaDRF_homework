@@ -3,6 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 from .models import Project
 from .serializers import ProjectModelSerializer
 from .filters import ProjectFilter
+from rest_framework.permissions import DjangoModelPermissions
 
 
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
@@ -14,3 +15,4 @@ class ProjectModelViewSet(ModelViewSet):
    serializer_class = ProjectModelSerializer
    pagination_class = ProjectLimitOffsetPagination
    filterset_class = ProjectFilter
+   permission_classes = [DjangoModelPermissions]
