@@ -7,15 +7,10 @@ const ProjectItem = ({project}) => {
    return (
        <tr>
            <td>
-               {project.name}
+               <Link to={`/project/${project.projectId}`}>{project.projectId}</Link>
            </td>
            <td>
                {project.status}
-           </td>
-
-           <td>
-               {/* {project.projectId} */}
-               <Link to={`/project/${project.projectId}`}>{project.projectId}</Link>
            </td>
        </tr>
    )
@@ -35,9 +30,7 @@ const ProjectList = ({projects}) => {
                 <th>
                         Status
                 </th>
-                <th>
-                        ID
-                </th>
+
                 {projects.map((project) => <ProjectItem project={project} />)}
             </table>
         </div>

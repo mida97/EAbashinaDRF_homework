@@ -4,6 +4,7 @@ from .models import User
 
 class UserModelSerializer(HyperlinkedModelSerializer):
    class Meta:
+       ordering = ['-id']
        model = User
        fields = ['username',
                  'email',

@@ -11,7 +11,7 @@ class ToDo (models.Model):
                                     on_delete=models.PROTECT)
     description = models.CharField(max_length=255, verbose_name='Description')
     created_by = models.ForeignKey(User, verbose_name='Created By', related_name='created_todo',
-                                   on_delete=models.PROTECT)
+                                   on_delete=models.PROTECT, null=True)
     create_date = models.DateTimeField(blank=True)
     plan_date = models.DateField()
     change_date = models.DateTimeField(blank=True)
