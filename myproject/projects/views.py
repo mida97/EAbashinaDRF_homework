@@ -6,6 +6,11 @@ from .filters import ProjectFilter
 from rest_framework.permissions import DjangoModelPermissions
 
 
+class CustomModelPermissions(DjangoModelPermissions):
+    def has_permission(self, request, view):
+        return request.user.is_staff or super().has_permission(request, view)
+
+
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
    default_limit = 10
 
@@ -15,4 +20,4 @@ class ProjectModelViewSet(ModelViewSet):
    serializer_class = ProjectModelSerializer
    pagination_class = ProjectLimitOffsetPagination
    filterset_class = ProjectFilter
-   permission_classes = [DjangoModelPermissions]
+   permission_classes = [CustomModelPermissions]

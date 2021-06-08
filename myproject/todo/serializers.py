@@ -3,11 +3,13 @@ from datetime import datetime
 from rest_framework.serializers import HyperlinkedModelSerializer, StringRelatedField, PrimaryKeyRelatedField
 
 from projects.models import Project
+from users.models import User
 from .models import ToDo
 
 
 class ToDoModelSerializer(HyperlinkedModelSerializer):
     project = PrimaryKeyRelatedField(read_only=False, queryset=Project.objects.all())
+    assigned_to = PrimaryKeyRelatedField(read_only=False, queryset=User.objects.all())
     class Meta:
         ordering = ['todo_id']
         model = ToDo
