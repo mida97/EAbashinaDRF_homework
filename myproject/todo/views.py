@@ -5,7 +5,7 @@ from rest_framework.viewsets import ModelViewSet
 from .filters import ToDoFilter
 from .models import ToDo
 from .serializers import ToDoModelSerializer
-
+from rest_framework.permissions import DjangoModelPermissions
 
 class ToDoLimitOffsetPagination(LimitOffsetPagination):
     default_limit = 20
@@ -16,6 +16,7 @@ class ToDoModelViewSet(ModelViewSet):
     serializer_class = ToDoModelSerializer
     pagination_class = ToDoLimitOffsetPagination
     filterset_class = ToDoFilter
+    permission_classes = [DjangoModelPermissions]
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
