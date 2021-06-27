@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.views.generic import TemplateView
 from graphene_django.views import GraphQLView
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -41,4 +42,6 @@ urlpatterns = [
    #re_path('^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
 
    path("graphql/", GraphQLView.as_view(graphiql=True)),
+
+   path('', TemplateView.as_view(template_name='index.html')),
 ]

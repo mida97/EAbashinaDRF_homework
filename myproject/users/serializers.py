@@ -6,7 +6,8 @@ class UserModelSerializerV1(HyperlinkedModelSerializer):
    class Meta:
        ordering = ['-id']
        model = User
-       fields = ['username',
+       fields = ['id',
+                 'username',
                  'email',
                  'first_name',
                  'last_name',
@@ -16,7 +17,8 @@ class UserModelSerializerV2(HyperlinkedModelSerializer):
    class Meta:
        ordering = ['-id']
        model = User
-       fields = ['username',
+       fields = ['id',
+                 'username',
                  'email',
                  'first_name',
                  'last_name',
